@@ -5,6 +5,9 @@ angular.module('hackfeedApp')
 
     var sessionsRef = new Firebase("https://huh.firebaseio.com/sessions");
     $scope.sessions = $firebase(sessionsRef);
+    var key = $scope.sessions.$getIndex();
+    console.log(key.length);
+    $scope.currentSession = "";
 
     $scope.addSession = function() {
       if ($scope.title) {
@@ -12,7 +15,8 @@ angular.module('hackfeedApp')
           "title": $scope.title,
           "uid": 1,
           "authorName": "marcel",
-          "startedAt": new Date()
+          "startedAt": new Date(),
+          "avatarUrl": "http://"
         }
         $scope.sessions.$add($scope.currentSession);
         $scope.sessionStarted = true;
