@@ -1,3 +1,8 @@
+<div ng-cloak ng-show-auth="login" ng-controller="LoginController">
+  <span ng-bind="currentUser.displayName"></span><br>
+  <img ng-src="{{currentUser.avatarLink}}" class="avatar"><br>
+  <a href="#" ng-click="logout()">Log Out</a>
+</div>
 <div ng-controller="MainCtrl">
   <center ng-show="sessionStarted">
     Current session:<br>
