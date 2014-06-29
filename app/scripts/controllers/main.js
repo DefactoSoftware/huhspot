@@ -42,7 +42,7 @@ angular.module('hackfeedApp')
       sessionsRef.child($scope.currentKey).update($scope.currentSession);
       current.type = "huh";
       current.priority = 0;
-      current.body = "Number of huhs in "+ current.title + " is: " + 3;
+      current.body = "Number of huhs in "+ current.title + " is: " + $scope.currentSession.numberHuhs || 0;
       $scope.posts.$add(current);
       $scope.sessionStarted = false;
     }
