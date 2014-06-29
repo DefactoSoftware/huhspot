@@ -7,14 +7,17 @@
   <center ng-show="sessionStarted">
     Current session:<br>
     {{currentSession.title}}  -- 
-    <span ng-show="currentSession.huhs">
-      <span ng-repeat="huh in currentSession.huhs">
-        <h1 ng-show="$last">{{$index}}</h1>
+    {{currentSession.huhs}}
+    <span ng-repeat="session in sessions">
+      <span ng-show="$last">
+        <span ng-repeat="huh in session.huhs">
+          <h1 ng-show="$last">{{$index + 1}}</h1>
+        </span>
+        <span ng-hide="session.huhs">
+          <h1>0</h1>
+        </span>
       </span>
     </span>
-    <h1 ng-hide="currentSession.huhs">
-      0
-    </h1>
     <br>
     <input type="submit" value="Stop session" ng-click="endSession(currentSession)"> 
   </center>
@@ -31,7 +34,7 @@
     {{session.title}} --  
     <span ng-show="session.huhs">
       <span ng-repeat="huh in session.huhs">
-        <span ng-show="$last">{{$index}}</span>
+        <span ng-show="$last">{{$index + 1}}</span>
       </span>
     </span>
     <span ng-hide="session.huhs">
