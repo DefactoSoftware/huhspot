@@ -1,43 +1,34 @@
-<div ng-cloak ng-show-auth="login" ng-controller="LoginController">
-  <span ng-bind="currentUser.displayName"></span><br>
-  <img ng-src="{{currentUser.avatarLink}}" class="avatar"><br>
-  <a href="#" ng-click="logout()">Log Out</a>
-</div>
-<div ng-controller="MainCtrl">
-  <center ng-show="sessionStarted">
-    Current session:<br>
-    {{currentSession.title}}  -- 
-    <span ng-repeat="session in sessions">
-      <span ng-show="$last">
-        <span ng-repeat="huh in session.huhs">
-          <h1 ng-show="$last">{{currentSession.numberHuhs = $index + 1}}</h1>
-        </span>
-        <span ng-hide="session.huhs">
-          <h1>0</h1>
-        </span>
-      </span>
-    </span>
-    <br>
-    <input type="submit" value="Stop session" ng-click="endSession(currentSession)"> 
-  </center>
-  <div ng-hide="sessionStarted">
-    <form  ng-submit="addSession()">
-      <input type="text" name="title" ng-model="title">
-      <input type="submit" value="Start session">
-    </form>
-  </div>
 
-  <h2>Past sessions</h2>
-  <div ng-repeat="session in sessions"> 
-    
-    {{session.title}} --  
-    <span ng-show="session.huhs">
-      <span ng-repeat="huh in session.huhs">
-        <span ng-show="$last">{{$index + 1}}</span>
-      </span>
-    </span>
-    <span ng-hide="session.huhs">
-      0
-    </span>
+<header id="container-header">
+  <h3>Past sessions</h3>
+  <div class="user">
+    <div ng-cloak ng-show-auth="login" ng-controller="LoginController">
+      <a href="#" ng-click="logout()">Log Out</a>
+      <span ng-bind="currentUser.displayName"></span>
+      <img ng-src="{{currentUser.avatarLink}}" class="avatar">
+    </div>
+    <div ng-cloak ng-show-auth="['logout','error']">
+      <a href="#/login">Log In</a>
+    </div>
   </div>
+</header>
+
+<div id="feed" ng-controller="MainCtrl">
+  <ul>
+    <li class="post" ng-repeat="session in sessions">
+      <span class="count">
+        <span ng-show="session.huhs">
+          <span ng-repeat="huh in session.huhs">
+            <span ng-show="$last">{{currentSession.numberHuhs = $index + 1}}</span>
+          </span>
+        </span>
+        <span ng-hide="session.huhs">0</span>
+      </span>
+
+      <span class="title">
+        {{session.title}}
+      </span>
+
+    </li>
+  </ul>
 </div>
