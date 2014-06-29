@@ -4,7 +4,9 @@ angular.module('hackfeedApp')
   .controller('MainCtrl', ['$scope', '$rootScope', '$firebase', '$cookieStore', function ($scope, $rootScope, $firebase, $cookieStore) {
 
     var sessionsRef = new Firebase("https://huh.firebaseio.com/sessions");
+    var postsRef = new Firebase("https://wellfed.firebaseio.com/posts");
     $scope.sessions = $firebase(sessionsRef);
+    $scope.posts = $firebase(postsRef);
     var key = $scope.sessions.$getIndex();
     console.log($cookieStore.get('currentSession'));
     $scope.currentSession = $cookieStore.get('currentSession');
@@ -38,6 +40,10 @@ angular.module('hackfeedApp')
       $cookieStore.remove('currentKey');
       $cookieStore.remove('sessionStarted');
       sessionsRef.child($scope.currentKey).update($scope.currentSession);
+      current.type = "huh";
+      current.priority = 0;
+      current.body = "Number of huhs in "+ current.title + " is: " + current.numberHuhs;
+      $scope.posts.$add(current);
       $scope.sessionStarted = false;
     }
   }]);
