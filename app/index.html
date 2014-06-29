@@ -48,7 +48,7 @@
           <h3 class="session-name">{{currentSession.title}}</h3>
           <span ng-show="currentSession.huhs">
             <span ng-repeat="huh in currentSession.huhs">
-              <h1 ng-show="$last">{{$index}}</h1>
+              <h1 ng-show="$last">{{currentSession.numberHuhs = $index + 1}}</h1>
             </span>
           </span>
           <br>

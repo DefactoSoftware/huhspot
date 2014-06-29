@@ -19,7 +19,7 @@
       <span class="count">
         <span ng-show="session.huhs">
           <span ng-repeat="huh in session.huhs">
-            <span ng-show="$last">{{$index}}</span>
+            <span ng-show="$last">{{currentSession.numberHuhs = $index + 1}}</span>
           </span>
         </span>
         <span ng-hide="session.huhs">0</span>

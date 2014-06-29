@@ -32,7 +32,7 @@ angular.module('hackfeedApp')
         $scope.title = "";
       }
     }
-    
+
     $scope.endSession = function(current) {
       current.endedAt = new Date();
       $cookieStore.put('currentKey', "");
@@ -42,7 +42,7 @@ angular.module('hackfeedApp')
       sessionsRef.child($scope.currentKey).update($scope.currentSession);
       current.type = "huh";
       current.priority = 0;
-      current.body = "Number of huhs in "+ current.title + " is: " + current.numberHuhs;
+      current.body = "Number of huhs in "+ current.title + " is: " + 3;
       $scope.posts.$add(current);
       $scope.sessionStarted = false;
     }
