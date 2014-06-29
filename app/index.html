@@ -23,10 +23,44 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- 
+    <!--
       <div id="header" ng-include src='"views/partials/header.html"'></div>
     -->
-    <div class="container" ng-view=""></div>
+    <section id="sidebar">
+      <header>
+        <h1>HuhSpot</h1>
+      </header>
+
+      <div class="info">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin purus orci, imperdiet sit amet malesuada sit amet, suscipit id nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed eu posuere nisl, nec sollicitudin est. Aliquam diam sapien, tristique nec turpis eu, porta euismod velit.</p>
+      </div>
+
+      <br>
+      <div class="session" ng-controller="MainCtrl">
+        <div ng-hide="sessionStarted">
+          <form ng-submit="addSession()">
+            <input type="text" name="title" ng-model="title" placeholder="Session name...">
+            <input type="submit" value="Start session">
+          </form>
+        </div>
+        <center ng-show="sessionStarted">
+          <p>Current session:</p>
+          <h3 class="session-name">{{currentSession.title}}</h3>
+          <span ng-show="currentSession.huhs">
+            <span ng-repeat="huh in currentSession.huhs">
+              <h1 ng-show="$last">{{$index}}</h1>
+            </span>
+          </span>
+          <br>
+          <p>Huh count:</p>
+          <h1 class="huh-count" ng-hide="currentSession.huhs">0</h1>
+          <br>
+          <input type="submit" value="Stop session" ng-click="endSession(currentSession)">
+        </center>
+      </div>
+    </section>
+
+    <div id="container" ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
