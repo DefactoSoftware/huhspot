@@ -1,8 +1,17 @@
 <div ng-controller="MainCtrl">
   <div ng-show="sessionStarted">
     Current session:<br>
-    {{currentSession.title}} 
-    <input type="button" value="Stop session" ng-click="endSession()"> 
+    {{currentSession.title}}  -- 
+    <span ng-show="currentSession.huhs">
+      <span ng-repeat="huh in currentSession.huhs">
+        <span ng-show="$last">{{$index}}</span>
+      </span>
+    </span>
+    <span ng-hide="currentSession.huhs">
+      0
+    </span>
+    <br>
+    <input type="submit" value="Stop session" ng-click="endSession()"> 
   </div>
   <div ng-hide="sessionStarted">
     <form  ng-submit="addSession()">
@@ -13,6 +22,15 @@
 
   <h2>Past sessions</h2>
   <div ng-repeat="session in sessions"> 
-    {{session.title}}
+    
+    {{session.title}} --  
+    <span ng-show="session.huhs">
+      <span ng-repeat="huh in session.huhs">
+        <span ng-show="$last">{{$index}}</span>
+      </span>
+    </span>
+    <span ng-hide="session.huhs">
+      0
+    </span>
   </div>
 </div>
