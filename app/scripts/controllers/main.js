@@ -15,10 +15,10 @@ angular.module('hackfeedApp')
       if ($scope.title) {
         $scope.currentSession = {
           "title": $scope.title,
-          "uid": 1,
-          "authorName": "marcel",
+          "uid": $scope.currentUser.id,
+          "authorName": $scope.currentUser.displayName,
           "startedAt": new Date(),
-          "avatarUrl": "http://"
+          "avatarUrl": $scope.currentUser.avatarLink
         }
         $scope.sessionStarted = true;
         $cookieStore.put('currentSession', $scope.currentSession);
