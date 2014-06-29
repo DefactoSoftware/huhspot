@@ -7,11 +7,10 @@
   <center ng-show="sessionStarted">
     Current session:<br>
     {{currentSession.title}}  -- 
-    {{currentSession.huhs}}
     <span ng-repeat="session in sessions">
       <span ng-show="$last">
         <span ng-repeat="huh in session.huhs">
-          <h1 ng-show="$last">{{$index + 1}}</h1>
+          <h1 ng-show="$last">{{currentSession.numberHuhs = $index + 1}}</h1>
         </span>
         <span ng-hide="session.huhs">
           <h1>0</h1>
