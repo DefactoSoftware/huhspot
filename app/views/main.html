@@ -1,18 +1,18 @@
 <div ng-controller="MainCtrl">
-  <div ng-show="sessionStarted">
+  <center ng-show="sessionStarted">
     Current session:<br>
     {{currentSession.title}}  -- 
     <span ng-show="currentSession.huhs">
       <span ng-repeat="huh in currentSession.huhs">
-        <span ng-show="$last">{{$index}}</span>
+        <h1 ng-show="$last">{{$index}}</h1>
       </span>
     </span>
-    <span ng-hide="currentSession.huhs">
+    <h1 ng-hide="currentSession.huhs">
       0
-    </span>
+    </h1>
     <br>
-    <input type="submit" value="Stop session" ng-click="endSession()"> 
-  </div>
+    <input type="submit" value="Stop session" ng-click="endSession(currentSession)"> 
+  </center>
   <div ng-hide="sessionStarted">
     <form  ng-submit="addSession()">
       <input type="text" name="title" ng-model="title">
