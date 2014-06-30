@@ -135,6 +135,17 @@ body {
   }
 }
 
+.blur {
+  min-height: 100vh;
+  background-image: url(../images/blur.png);
+  background-size: cover;
+  color: #fff;
+  fieldset {
+    background: none!important;
+    border: 0px;
+    padding: 0px;
+  }
+}
 
 
 
